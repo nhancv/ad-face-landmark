@@ -1,25 +1,24 @@
 import org.apache.tools.ant.taskdefs.condition.Os
 
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
 
     defaultConfig {
         applicationId "com.simoncherry.artest"
         minSdkVersion 21
-        targetSdkVersion 25
+        targetSdkVersion 28
         versionCode 1
         versionName "${rootProject.ext.releaseVersionName}"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
-            //设置支持的SO库架构
             abiFilters 'armeabi-v7a'
         }
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -27,9 +26,12 @@ android {
         }
     }
 
-    sourceSets.main.jni.srcDirs = []
-    //禁止自带的ndk功能
-    sourceSets.main.jniLibs.srcDirs = ['src/main/libs','src/main/jniLibs']
+    sourceSets {
+        main {
+            jni.srcDirs = []
+            jniLibs.srcDirs = ['src/main/libs','src/main/jniLibs']
+        }
+    }
 
     task ndkBuild(type: Exec, description: 'Compile JNI source with NDK') {
         Properties properties = new Properties()
@@ -77,7 +79,7 @@ repositories {
     mavenLocal()
 }
 
-def AAVersion = '4.0.0'
+def AAVersion = '4.6.0'
 
 repositories {
     flatDir {
@@ -86,27 +88,27 @@ repositories {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile "com.android.support:appcompat-v7:${rootProject.ext.androidSupportSdkVersion}"
-    compile "com.android.support:design:${rootProject.ext.androidSupportSdkVersion}"
-    compile "com.android.support:recyclerview-v7:${rootProject.ext.androidSupportSdkVersion}"
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.androidSupportSdkVersion}"
+    implementation "com.android.support:design:${rootProject.ext.androidSupportSdkVersion}"
+    implementation "com.android.support:recyclerview-v7:${rootProject.ext.androidSupportSdkVersion}"
 
-    apt "org.androidannotations:androidannotations:$AAVersion"
-    compile "org.androidannotations:androidannotations-api:$AAVersion"
+    annotationProcessor "org.androidannotations:androidannotations:$AAVersion"
+    implementation "org.androidannotations:androidannotations-api:$AAVersion"
 
-    compile project(':dlib')
-    compile(name:'rajawali-release', ext:'aar')
-    compile 'com.alibaba:fastjson:1.1.55.android'
-    compile 'com.github.dexafree:materiallist:3.0.1'
-    compile 'com.github.bumptech.glide:glide:3.8.0'
-    compile 'io.reactivex.rxjava2:rxjava:2.1.0'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation project(':dlib')
+    implementation(name:'rajawali-release', ext:'aar')
+    implementation 'com.alibaba:fastjson:1.1.55.android'
+    implementation 'com.github.dexafree:materiallist:3.0.1'
+    implementation 'com.github.bumptech.glide:glide:3.8.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
 
     // Add AndroidJUnit
-    androidTestCompile "com.android.support:support-annotations:${rootProject.ext.androidSupportSdkVersion}"
-    androidTestCompile 'com.android.support.test:runner:0.5'
-    androidTestCompile 'com.android.support.test:rules:0.5'
+    androidTestImplementation "com.android.support:support-annotations:${rootProject.ext.androidSupportSdkVersion}"
+    androidTestImplementation 'com.android.support.test:runner:0.5'
+    androidTestImplementation 'com.android.support.test:rules:0.5'
     // Optional -- Hamcrest library
-    androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
+    androidTestImplementation 'org.hamcrest:hamcrest-library:1.3'
 }
 apply plugin: 'com.jakewharton.hugo'

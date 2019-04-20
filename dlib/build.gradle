@@ -5,12 +5,12 @@ version = "${rootProject.ext.releaseVersionName}"
 group = "com.tzutalin.dlib-android-app"
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.0'
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 25
+        minSdkVersion 21
+        targetSdkVersion 28
         versionCode 1
         versionName "${rootProject.ext.releaseVersionName}"
     }
@@ -45,10 +45,10 @@ configurations {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile "com.android.support:appcompat-v7:${rootProject.ext.androidSupportSdkVersion}"
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.androidSupportSdkVersion}"
     javadocDeps "com.android.support:appcompat-v7:${rootProject.ext.androidSupportSdkVersion}"
-    compile "com.android.support:support-annotations:${rootProject.ext.androidSupportSdkVersion}"
+    implementation "com.android.support:support-annotations:${rootProject.ext.androidSupportSdkVersion}"
     javadocDeps "com.android.support:support-annotations:${rootProject.ext.androidSupportSdkVersion}"
 }
 

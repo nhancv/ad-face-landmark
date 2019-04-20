@@ -1,4 +1,16 @@
 
+# INSTALLATION
+- Install Python 2.7.16
+- Download libs by run command below
+```
+./envsetup
+```
+- Download `android-ndk-r14b`: https://developer.android.com/ndk/downloads/older_releases and update `ndk.dir` in `local.properties` file
+
+
+
+
+
 AR相机
 ===================================
 根据人脸图片构建简单的3D人脸模型，然后在摄像头预览画面中展示。基于该人脸模型进行换脸或者添加装饰品。

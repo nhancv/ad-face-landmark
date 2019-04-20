@@ -97,7 +97,7 @@ public class OBJUtils {
         Bitmap bitmap = Bitmap.createBitmap(1024, 1024, Bitmap.Config.RGB_565);
         Canvas canvas = new Canvas(bitmap);
         canvas.drawBitmap(face, (1024-faceWidth)/2, (1024-faceHeight)/2, null);
-        canvas.save(Canvas.ALL_SAVE_FLAG);
+        canvas.save();
         canvas.restore();
         face.recycle();
         face = null;
@@ -385,7 +385,7 @@ public class OBJUtils {
         Bitmap bitmap = Bitmap.createBitmap(1024, 1024, Bitmap.Config.RGB_565);
         Canvas canvas = new Canvas(bitmap);
         canvas.drawBitmap(face, (1024-faceWidth)/2, (1024-faceHeight)/2, null);
-        canvas.save(Canvas.ALL_SAVE_FLAG);
+        canvas.save();
         canvas.restore();
         face.recycle();
         face = null;
