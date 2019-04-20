@@ -2,14 +2,15 @@
 # INSTALLATION
 - Install Python 2.7.16
 - Download libs by run command below
+
 ```
 ./envsetup
 ```
+
+Or just download prebuilt opencv for android: http://netix.dl.sourceforge.net/project/opencvlibrary/opencv-android/3.1.0/OpenCV-3.1.0-android-sdk.zip, then extract and update the path 
+of `OpenCV-android-sdk/sdk/native/jni/OpenCV.mk` to `include` field in `app/src/main/jni/Android.mk`
+
 - Download `android-ndk-r14b`: https://developer.android.com/ndk/downloads/older_releases and update `ndk.dir` in `local.properties` file
-
-
-
-
 
 AR相机
 ===================================

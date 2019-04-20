@@ -115,7 +115,7 @@ def sync_submodules():
     if not os.path.exists('third_party'):
         os.makedirs('third_party')
 
-    print 'download prebuilt opencv for android'
+    print 'Download prebuilt opencv for android'
     prebuilt_path = os.path.join(ROOT, 'third_party')
     prebuilt_opencv_out = prebuilt_path
     downloadPrebuiltOpencv(
